@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./practice7.css">
+</head>
+<body>
+    <div id="big">
+        <div id="wrap">
+            <div id="login">
+                <div class="input">
+                    <h4>아이디</h4>
+                    <div class="inputtext">
+                        <input type="text" id="inputId">
+                        <span><p class="warn" id="idRule">필수 입력 항목입니다.</p></span>
+                    </div>
+                </div>
+                <div class="input">
+                    <h4>패스워드</h4>
+                    <div id="password1" class="inputtext">
+                        <input type="text" onclick="passwordRule()" id="inputPassword" >
+                        <span><p class="warn" id="passwordRule">영문자 대/소문자, 특수문자 숫자포함 8~32자</p></span>
+                        <span><p class="warn" id="ss">필수 입력 항목 입니다</p></span>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <h4>패스워드 확인</h4>
+                    <div class="inputtext">
+                        <input type="text" id="passwordCheck">
+                        <span><p class="warn">필수 입력 항목 입니다</p></span>
+                    </div>
+                </div>
+                <div class="input">
+                    <h4>이메일</h4>
+                    <div class="inputtext">
+                        <input type="text" id="abc" class="email">@
+                        <input type="text" id="abc2" class="email">
+                        
+                    </div>
+                </div>
+                <div class="input">
+                    <h4>주소</h4>
+                    <div class="inputtext">
+                        <input type="text">
+                        
+                    </div>
+                </div>
+                <div class="input" id="accession">
+                    <button><h3>가 입</h3></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        const inputPassword = document.getElementById("inputPassword");
+        const passwordCheck = document.getElementById("passwordCheck");
+        function passwordRule(){
+            let passwordRule = document.getElementById("passwordRule");
+            passwordRule.style.display = 'flex';
+        }
+
+        function checkId(){
+            document.getElementById("ss").style.display = "none";
+            if(document.getElementById("inputId").value == ""){
+                document.getElementById("idRule").style.display = "flex";
+            } else {
+                document.getElementById("idRule").style.display = "none";
+            }
+        }
+        function checkIdPwd(){
+            
+            if(document.getElementById("inputId").value == ""){
+                document.getElementById("idRule").style.display = "flex";
+            } else {
+                document.getElementById("idRule").style.display = "none";
+            }
+            if(document.getElementById("inputPassword").value == ""){
+                document.getElementById("ss").style.display = "flex";
+                document.getElementById("passwordRule").style.display = "none"
+            } else {
+                document.getElementById("ss").style.display = "none";
+            }
+        }
+        
+        function checkId2(){
+            
+            
+                document.getElementById("idRule").style.display = "none"
+            
+        }
+
+        
+        document.getElementById("inputId").addEventListener('focus',checkId2)
+        inputPassword.addEventListener('focus',checkId)
+        passwordCheck.addEventListener('focus',checkIdPwd)
+        document.getElementsByClassName("email").addEventListener('focus',checkAll)
+    </script>
+
+</body>
+</html>

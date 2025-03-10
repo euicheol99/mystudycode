@@ -1,0 +1,23 @@
+package com.kh.notice.service;
+
+import static com.kh.common.JDBCTemplate.close;
+import static com.kh.common.JDBCTemplate.getConnection;
+
+import java.sql.Connection;
+
+import com.kh.notice.model.dao.NoticeDao;
+
+public class NoticeService {
+	public int selectNoticeCount() {
+		Connection conn = getConnection();
+		
+		
+		int noticeCount=new NoticeDao().selectNoticeCount(conn);
+		
+		return noticeCount;
+	}
+	
+	public ArrayList<Notice> selectNotice(NoticeInfo pi){
+		
+	}
+}

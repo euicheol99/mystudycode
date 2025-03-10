@@ -1,0 +1,23 @@
+package com.kh.notice.model.vo;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class Notice {
+	private int noticeNo;
+	private int noticeTitle;
+	private int noticeContent;
+	private int noticeWriter;
+	private int count;
+	private int createDate;
+	private int status;
+	
+}

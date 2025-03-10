@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .filed{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 500px;
+        }
+        
+        #selectbox{
+            display: flex;
+            margin: 0px 40px;
+        }
+
+        #titleinput{
+            width: 500px;
+            background-color: rgb(192, 190, 190);
+            padding: 15px;
+            visibility: hidden;
+            
+        }
+
+        #dateinput{
+            width: 500px;
+            background-color: rgb(192, 190, 190);
+            padding: 15px;
+           display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Practice5</h1>
+
+    <fieldset class="filed">
+        <legend>검색할 항목을 선택하세요.</legend>
+        <div id="selectbox">
+            <input type="radio" class="radio" name="a" id="titlebtn">제목
+            <input type="radio" class="radio" name="a" id="datebtn">날짜
+            <input type="radio" class="radio" name="a" id="writerbtn">작성자
+        </div>
+    </fieldset>
+    <br>
+    <div id="titleinput">
+        
+    </div>
+
+
+
+    <script>
+        // // 라디오 버튼들에 이벤트 리스너 추가
+        // const radios = document.querySelectorAll(".radio");
+        // radios.forEach(radio => {
+        //     radio.addEventListener('change', function() {
+        //         // 라디오 버튼이 체크되면 다른 라디오 버튼들 체크 해제
+        //         if (this.checked) {
+        //             radios.forEach(ra => {
+        //                 if (ra !== this) {
+        //                     ra.checked = false;
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
+
+        // 제목 라디오 버튼 선택 시 제목 입력란 표시
+        document.getElementById("titlebtn").addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById("titleinput").innerHTML = '<div id="showtitle">            검색할 제목을 입력하세요:        </div>        <div>            <input type="text" style="width: 410px;">            <button style="margin-left: 15px;">검색</button>        </div>'
+                document.getElementById("titleinput").style.visibility = "visible";
+            } 
+        });
+
+        document.getElementById("datebtn").addEventListener('change', function(){
+            if(this.checked){
+                document.getElementById("titleinput").innerHTML = '<div>          검색할 날짜를 입력하세요 :        </div>        <div>           <input type="date"> -            <input type="text" value="연도-월-일" style="margin-right: 10px;">             <button>검색</button>        </div>'                
+                document.getElementById("titleinput").style.visibility = "visible";
+            } 
+        })
+    </script>
+</body>
+</html>

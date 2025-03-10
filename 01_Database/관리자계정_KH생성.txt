@@ -1,0 +1,14 @@
+--관리자계정으로 생성
+CREATE USER C##KH IDENTIFIED BY KH;
+
+GRANT CONNECT, RESOURCE TO C##KH;
+
+ALTER USER C##KH DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+--KH계정으로 전환
+
+왼쪽 상단 +버튼 눌러서 계정 생성
+NAME은 관리자계정_KH
+C##KH
+KH로 테스트해보고 저장 색깔은 초록색으로
+
+그리고 KH.SQL 파일 띄워서 C##SERVER 내용을 C##KH로 바꿔서 스크립트 실행

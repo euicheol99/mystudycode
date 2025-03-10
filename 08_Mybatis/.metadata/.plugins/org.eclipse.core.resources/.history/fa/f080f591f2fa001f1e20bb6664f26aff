@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardMapper">
+	<!-- 
+		*SELECT문 사용시 
+		<select id = "각 sql문 식별자" [parameterType="전달받을 객체타입"] resultMap="직접 맵핑한 resultMap의 id" | resultType="결과타입(별칭)">
+			select 쿼리문
+		</select>
+	 -->
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) AS "COUNT"
+		FROM BOARD
+		WHERE STATUS = 'Y'
+	</select>
+	
+	<select id="selectList" resultMap="">
+		SELECT BOARD_NO,
+				BOARD_TITLE,
+				USER_ID,
+				COUNT,
+				CREATE_DATE
+		FROM BOARD B
+		JOIN MEMBER ON(BOARD_WRITER = USER_NO)
+		WHERE B.STATUS = 'Y'
+		ORDER BY BOARD_NO DESC
+	</select>
+</mapper>

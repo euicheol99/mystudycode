@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        div,input{
+            box-sizing: border-box;
+            /* border: 1px solid black; */
+        }
+
+        /*  화면 전체를 감싸는 div */
+        .wrap{
+            width: 80%;
+            height: 800px;
+            margin: 0 auto;
+        }
+
+        .wrap>div{
+            width: 100%;
+        }
+
+        /*header*/
+        #header{height: 13%;
+            border: 1px solid black;}
+        #footer, #aside{height: 20%;}
+        #navigator{height: 10%; }
+        #content1{height: 13%;}
+        #content2{height: 6%;}
+        #content3{height: 31%;}
+
+        #header>div, #content1>div, #aside>div{height: 100%; float: left;}
+
+        /*20 65 15*/
+        #header_1{
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #header_2{width: 80%;
+            display: flex;
+            align-items: center;
+            padding-left: 10%;
+        }
+        #header_2>input{
+            height: 25%;
+            width: 35%;
+        }
+        #searchbtn{
+            height: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 13%;
+            border: 1px solid black;
+        }
+        
+        /*navigator*/
+        #navigator{
+            margin: 5px auto;
+            border: 1px solid black;
+        }
+        ul,li,ol{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        
+        #navi{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        #navi>li{
+            float: left;
+            text-align: center;
+            height: 100%;
+            color: rgb(89, 89, 89);
+
+        }
+
+        #navi a{
+            font-size: 17px;
+            font-weight: 500;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            line-height: 36px;
+            color: rgb(89, 89, 89);
+        }
+
+        #navi a:hover{
+            color: rgb(89, 89, 89);
+            scale: 1.08;
+        }
+
+        #navi>li>ul{
+            display: none;
+        }
+        #navi>li>a:hover+ul{
+            display: block;
+        }
+        #navi>li>ul:hover{
+            display: block;
+        }
+
+        #navi>li>ul a{
+            font-size: 15px;
+        }
+        /*content*/
+        #content1-1>img{width: 100%;}
+        /*15 65 20*/
+        #content1-1{
+            width: calc(65% - 5px);
+            border: 1px solid black;
+            margin-right: 5px;
+        }
+        #content1-2{width: 35%;
+            border: 1px solid black;
+        }
+        #content2{
+            margin-top: 5px;
+            width: calc(65% - 5px);
+            border: 1px solid black;
+        }
+
+        #login-form{
+            width: 100%;
+            height: 100%;
+        }
+        #login{
+            width: 100%;
+            height: 100%;
+        }
+        #login-input{
+            width: 100%;
+            height: 75%;
+        }
+        #login-input>*{
+            float: left;
+        }
+        #login-idpwd{
+            width: 70%;
+            height: 100%;
+            
+        }
+        #login-idpwd>input{
+            width: 100%;
+            height: 50%;
+            font-weight: 100;
+            color: grey;
+        }
+        #login-input-btn{
+            width: 30%;
+            height: 100%;
+        }
+        #login-input-btn>input{
+            width: 100%;
+            height: 100%;
+        }
+        #login-etc{
+            width: 100%;
+            height: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 900;
+        }
+        
+        #content2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 좌우 배치 */
+            padding: 0 10px; /* 양쪽 여백 추가 */
+        }
+        #content2>div{
+            font-size: 12px;
+            
+        }
+        #content2
+
+        #aside_1{width: 40%;}
+        #aside_2{width: 60%;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="header">
+            <div id="header_1"><img src="./images/logo.PNG" alt="KH로고"></div>
+            <div id="header_2">
+                <input type="text" value="검색어를 입력하세요.">
+                <div id="searchbtn"><img src="./images/search.png" alt="검색버튼" width="20px" ></div>
+
+                
+            </div>
+            
+           
+        </div>
+        <div id="navigator">
+            <ul id="navi">
+                <li><a href="">교육과정</a></li>
+                <li><a href="">교육원소개</a></li>
+                <li><a href="">취업지원센터</a></li>
+                <li><a href="">산학연계</a></li>
+                <li><a href="">상담센터</a></li>
+            </ul>
+        </div>
+        <div id="content1">
+            <div id="content1-1"><img src="./images/banner.PNG" alt=""></div>
+            <div id="content1-2">
+                <div id="login-form">
+                    <div id="login">
+                        <div id="login-input">
+                            <div id="login-idpwd">
+                                <input type="text" value="아이디를 입력하세요.">
+                                <input type="text" value="비밀번호를 입력하세요.">
+                            </div>
+                            <div id="login-input-btn">
+                                <input type="submit" value="로그인">
+                            </div>
+                        </div>
+                        <div id="login-etc">
+                            <a href="">아이디</a> |
+                            <a href="">비밀번호찾기</a> |
+                            <a href="">회원가입</a> |
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <div id="content2">
+            <div>안녕하세요 여기는 공지사항 제목이 들어오는 자리입니다.</div>
+            <div id="content2-links">
+                <a href="">경제</a>
+                <a href="">연예</a>
+                <a href="">사회</a>
+            </div>
+            
+        </div>
+        <div id="content3"></div>
+        <div id="aside">
+            <div id="aside_1"></div>
+            <div id="aside_2"></div>
+        </div>
+        <div id="footer">
+
+        </div>
+    </div>
+</body>
+</html>
