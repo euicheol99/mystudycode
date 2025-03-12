@@ -4,10 +4,10 @@
     <title>Title</title>
 </head>
 <body>
-        <jsp:include page="common/header.jsp"/>
-        <div class="content">
-            ${id} : ${pwd}
-        </div>
-        <jsp:include page="common/footer.jsp"/>
+    <jsp:include page="common/header.jsp" />
+    <div class="content">
+        ${id} : ${pwd}
+    </div>
+    <jsp:include page="common/footer.jsp" />
 </body>
 </html>

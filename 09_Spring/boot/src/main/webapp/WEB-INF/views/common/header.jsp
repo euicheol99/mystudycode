@@ -8,75 +8,75 @@
 	<title>Document</title>
 	
 	<!-- JavaScript -->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-<!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-<!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-<!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-    
-<style>
-    div{box-sizing: border-box;}
-    #header{
-        width:80%;
-        height:100px;
-        padding-top: 20px;
-        margin:auto;
-    } 
-    #header>div{width:100%; margin-bottom:10px}
-    #header_1{height:40%;}
-    #header_2{height:60%;}
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    #header_1>div{
-        height:100%;
-        float:left;
-    }
-    #header_1_left{width:150px;position:relative;}
-    #header_1_center{width:calc(100% - 420px);}
-    #header_1_right{width:270px;}
+    <style>
+        div{box-sizing: border-box;}
+        #header{
+            width:80%;
+            height:100px;
+            padding-top: 20px;
+            margin:auto;
+        }
+        #header>div{width:100%; margin-bottom:10px}
+        #header_1{height:40%;}
+        #header_2{height:60%;}
 
-    #header_1_left>img{height:80%;position:absolute;margin:auto;top:0;bottom:0;right: 0;left:0;}
-    #header_1_right{text-align: right; line-height:35px; font-size: 12px;}
-    #header_1_right>a{margin: 5px;}
-    #header_1_right>a:hover{cursor: pointer;}
-    
-    #header_2>ul{width:100%; height:100%; list-style-type: none; margin: auto; padding:0;}
-    #header_2>ul>li{float:left; width:25%; height:100%; line-height: 55px; text-align:center;}
-    #header_2>ul>li a{text-decoration: none; color:black; font-size: 18px; font-weight: 900;}
+        #header_1>div{
+            height:100%;
+            float:left;
+        }
+        #header_1_left{width:150px;position:relative;}
+        #header_1_center{width:calc(100% - 420px);}
+        #header_1_right{width:270px;}
 
-    #header_2{border-top:1px solid lightgray}
+        #header_1_left>img{height:80%;position:absolute;margin:auto;top:0;bottom:0;right: 0;left:0;}
+        #header_1_right{text-align: right; line-height:35px; font-size: 12px;}
+        #header_1_right>a{margin: 5px;}
+        #header_1_right>a:hover{cursor: pointer;}
 
-    #header a{text-decoration:none; color:black}
-    
-    /* 세부 페이지마다 공통적으로 유지할 style */
-    .content{
-        background-color:rgb(247, 245, 245);
-        width:80%;
-        margin:auto;
-    }
-    .innerOuter{
-        border:1px solid lightgray;
-        width:80%;
-        margin:auto;
-        padding:5% 10%;
-        background:white;
-    }
+        #header_2>ul{width:100%; height:100%; list-style-type: none; margin: auto; padding:0;}
+        #header_2>ul>li{float:left; width:25%; height:100%; line-height: 55px; text-align:center;}
+        #header_2>ul>li a{text-decoration: none; color:black; font-size: 18px; font-weight: 900;}
 
-</style>
+        #header_2{border-top:1px solid lightgray}
+
+        #header a{text-decoration:none; color:black}
+
+        /* 세부 페이지마다 공통적으로 유지할 style */
+        .content{
+            background-color:rgb(247, 245, 245);
+            width:80%;
+            margin:auto;
+        }
+        .innerOuter{
+            border:1px solid lightgray;
+            width:80%;
+            margin:auto;
+            padding:5% 10%;
+            background:white;
+        }
+
+    </style>
 </head>
 <body>
 
