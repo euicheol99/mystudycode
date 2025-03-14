@@ -1,5 +1,6 @@
 package com.kh.boot.domain.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Getter

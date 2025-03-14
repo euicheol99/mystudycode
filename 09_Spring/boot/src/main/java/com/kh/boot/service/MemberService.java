@@ -9,4 +9,6 @@ public interface MemberService {
     int insertMember(Member m);
     int idCheck(String id);
     int updateMember(Member m);
+
+
 }

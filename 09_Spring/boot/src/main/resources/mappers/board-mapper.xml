@@ -3,7 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kh.boot.mappers.BoardMapper">
-
     <resultMap id="boardResult" type="Board">
         <result column="BOARD_NO" property="boardNo"/>
         <result column="BOARD_TITLE" property="boardTitle"/>
@@ -19,15 +18,18 @@
         <result column="REPLY_NO" property="replyNo"/>
         <result column="REPLY_CONTENT" property="replyContent"/>
         <result column="REF_BNO" property="refBno"/>
+        <result column="REPLY_WRITER" property="replyWriter"/>
+        <result column="CREATE_DATE" property="createDate"/>
+        <result column="STATUS" property="status"/>
+    </resultMap>
+    <resultMap id="tBoardList" type="TBoard">
+        <result column="BOARD_NO" property="boardNo"/>
+        <result column="BOARD_TITLE" property="boardTitle"/>
         <result column="BOARD_CONTENT" property="boardContent"/>
-        <result column="ORIGIN_NAME" property="originName"/>
-        <result column="CHANGE_NAME" property="changeName"/>
-        REPLY_NO
-        REPLY_CONTENT
-        REF_BNO
-        REPLY_WRITER
-        CREATE_DATE
-        STATUS
+        <result column="BOARD_WRITER" property="boardWriter"/>
+        <result column="COUNT" property="count"/>
+        <result column="CREATE_DATE" property="createDate"/>
+        <result column="STATUS" property="status"/>
     </resultMap>
     <select id="selectBoardCount" resultType="_int">
         SELECT COUNT(*)
@@ -73,7 +75,7 @@
         SELECT BOARD_NO,
                 BOARD_TITLE,
                 BOARD_WRITER,
-                BOARD_CONTENT
+                BOARD_CONTENT,
                 ORIGIN_NAME,
                 CHANGE_NAME,
                 COUNT,
@@ -99,8 +101,100 @@
     <select id="getReplyList" resultMap="replyResult">
         SELECT REF_BNO,
             REPLY_CONTENT,
-            REPLY_WRITER
+            REPLY_WRITER,
+            TO_CHAR(CREATE_DATE,'YYYY-MM-DD') AS CREATE_DATE
         FROM REPLY
         WHERE REF_BNO = ${bno}
     </select>
+    <select id="getReplyCount">
+        SELECT COUNT(*)
+        FROM REPLY
+        WHERE REF_BNO = ${bno}
+    </select>
+    <select id="getTopList" resultMap="boardResult">
+        SELECT BOARD_NO,
+                BOARD_TITLE,
+                BOARD_WRITER,
+                COUNT,
+                TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE,
+                ORIGIN_NAME
+        FROM (
+        SELECT BOARD_NO,
+                BOARD_TITLE,
+                BOARD_WRITER,
+                COUNT,
+                CREATE_DATE,
+                ORIGIN_NAME
+        FROM BOARD
+        ORDER BY COUNT DESC
+        )
+        WHERE ROWNUM BETWEEN 1 AND 5
+    </select>
+    <update id="updateBoard">
+        UPDATE BOARD
+        SET BOARD_TITLE = #{boardTitle},
+            ORIGIN_NAME = #{originName},
+            CHANGE_NAME = #{changeName},
+            BOARD_CONTENT = #{boardContent}
+        WHERE BOARD_NO=${boardNo}
+    </update>
+    <select id="selecthumbnailCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM TBOARD
+        WHERE STATUS = 'Y'
+    </select>
+    <select id="selectTBoardList" resultMap="tBoardList">
+        SELECT BOARD_NO,
+                BOARD_TITLE,
+                COUNT,
+                FILE_PATH || CHANGE_NAME AS "THUMBNAIL_IMG"
+        FROM TBOARD B
+        JOIN ATTACHMENT ON(BOARD_NO = REF_BNO)
+        WHERE B.STATUS = 'Y'
+        AND FILE_LEVEL = 1
+        ORDER BY BOARD_NO DESC
+    </select>
+    <insert id="insertTBoard">
+        INSERT
+        INTO BOARD(
+                BOARD_NO,
+                BOARD_TITLE,
+                BOARD_WRITER,
+                BOARD_CONTENT,
+                ORIGIN_NAME,
+                CHANGE_NAME,
+                CREATE_DATE
+        ) VALUES (
+                SEQ_BNO.NEXTVAL,
+                #{boardTitle},
+                #{boardWriter},
+                #{boardContent},
+                #{originName},
+                #{changeName},
+                SYSDATE
+        )
+    </insert>
+    <insert id="insertAttachment">
+        INSERT
+        INTO ATTACHMENT(
+                FILE_NO,
+                REF_BNO,
+                ORIGIN_NAME,
+                FILE_PATH,
+                UPLOAD_DATE,
+                FILE_LEVEL
+        )
+        VALUES
+        <foreach collection="atlist" item="Attachment" separator=",">
+        (
+            SEQ_FILE_NO.NEXTVAL,
+            #{attachment.refBno},
+            #{attachment.originName},
+            #{attachment.filePath},
+            SYSDATE,
+            #{attachment.fileLevel}
+        )
+        </foreach>
+    </insert>
+
 </mapper>

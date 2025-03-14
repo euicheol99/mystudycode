@@ -12,6 +12,7 @@
     </style>
 </head>
 <body onload="init(${b.boardNo})">
+
 <jsp:include page="../common/header.jsp" />
 
 <div class="content">
@@ -69,7 +70,7 @@
         </div>
         <br><br>
 
-        <form action="" method="POST" id="postForm">
+        <form action="" method="get" id="postForm">
             <input type="hidden" name="bno" value="${b.boardNo}">
         </form>
 
@@ -92,10 +93,7 @@
         </script>
 
 
-        <form action="" method="post" id="postForm">
-            <input type="hidden" name=bno value="7">
-            <input type="hidden" name="filePath" value="이미지.jpg">
-        </form>
+
 
 
 
@@ -123,7 +121,7 @@
 
 
             <tr>
-                <td colspan="3">댓글(<span id="rcount">0</span>)</td>
+                <td colspan="3">댓글(<span id="rcount"></span>)</td>
             </tr>
 
             </thead>
@@ -134,10 +132,12 @@
     <br><br>
 
     <script>
+
         function init(bno){
             getReplyList(bno, function(data){
                 drawReplyList(data);
             });
+            countReply(bno);
         }
         function addReply(){
             //댓글내용, 작성자, 게시글번호
@@ -149,13 +149,15 @@
                 refBno: boardNo,
                 replyWriter: userId,
                 replyContent: content
+
             }, drawReplyList)
         }
 
         function getReplyList(bno,callback){
             $.ajax({
                 url: "/api/board/rlist.bo",
-                dataType: "jackson",
+                type: "get",
+                dataType: "json",
                 data: {
                     bno : bno
                 },
@@ -177,7 +179,7 @@
                 str += "<tr>" +
                             "<td>" + r.replyWriter + "</td>" +
                             "<td>" + r.replyContent + "</td>" +
-                            "<td>" + r.refBno + "</td>" +
+                            "<td>" + r.refBno + "</td>"
                         "</tr>";
             }
             const replyBody = document.querySelector("#replyArea tbody");
@@ -197,6 +199,25 @@
                 }
             })
         }
+
+        function countReply(bno) {
+            $.ajax({
+                url: "/api/board/rcount",
+                dataType: "json",  // 'dateType' -> 'dataType'으로 수정
+                data: {
+                    bno: bno
+                },
+                success: function(res) {
+                    const rcount = document.querySelector("#rcount");
+                    rcount.innerHTML = res;
+                },
+                error: function() {
+                    console.log("카운팅 실패");
+                }
+            });
+        }
+
+
     </script>
 </div>
 

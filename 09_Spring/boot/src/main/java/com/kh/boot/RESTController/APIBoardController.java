@@ -1,5 +1,6 @@
 package com.kh.boot.RESTController;
 
+import com.kh.boot.domain.vo.Board;
 import com.kh.boot.domain.vo.Reply;
 import com.kh.boot.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -27,4 +28,16 @@ public class APIBoardController {
     public ArrayList<Reply> getReplyList(int bno){
         return boardService.getReplyList(bno);
     }
+
+    @GetMapping("/rcount")
+    public int getReplyCount(int bno){
+        return boardService.getReplyCount(bno);
+    }
+
+    //produces : 해당 타입으로 응답을 반환해줘.
+    @GetMapping(value = "/toplist.bo", produces = "application/json; charset=UTF-8")
+    public ArrayList<Board> getTopList(){
+        return boardService.getTopList();
+    }
+
 }

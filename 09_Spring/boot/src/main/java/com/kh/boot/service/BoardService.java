@@ -1,8 +1,6 @@
 package com.kh.boot.service;
 
-import com.kh.boot.domain.vo.Board;
-import com.kh.boot.domain.vo.PageInfo;
-import com.kh.boot.domain.vo.Reply;
+import com.kh.boot.domain.vo.*;
 
 import java.util.ArrayList;
 
@@ -21,4 +19,19 @@ public interface BoardService {
     int insertReply(Reply reply);
 
     ArrayList<Reply> getReplyList(int bno);
+
+    int getReplyCount(int bno);
+
+    ArrayList<Board> getTopList();
+
+    int updateBoard(Board board);
+
+    int selecthumbnailCount();
+
+    ArrayList<TBoard> selectTBoardList(PageInfo pi);
+
+    int insertTBoard(TBoard board);
+
+    int insertAttachment(ArrayList<Attachment> atlist);
+
 }

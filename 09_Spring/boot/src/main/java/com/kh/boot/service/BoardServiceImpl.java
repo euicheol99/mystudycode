@@ -1,8 +1,6 @@
 package com.kh.boot.service;
 
-import com.kh.boot.domain.vo.Board;
-import com.kh.boot.domain.vo.PageInfo;
-import com.kh.boot.domain.vo.Reply;
+import com.kh.boot.domain.vo.*;
 import com.kh.boot.mappers.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.RowBounds;
@@ -52,6 +50,46 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public ArrayList<Reply> getReplyList(int bno) {
         return boardMapper.getReplyList(bno);
+    }
+
+    //댓글 갯수 가져오기
+    @Override
+    public int getReplyCount(int bno) {
+        return boardMapper.getReplyCount(bno);
+    }
+
+    //게시글 조회수 탑5
+    @Override
+    public ArrayList<Board> getTopList() {
+        return boardMapper.getTopList();
+    }
+
+    @Override
+    public int updateBoard(Board b) {
+        return boardMapper.updateBoard(b);
+    }
+
+    @Override
+    public int selecthumbnailCount() {
+        return boardMapper.selecthumbnailCount();
+    }
+
+    @Override
+    public ArrayList<TBoard> selectTBoardList(PageInfo pi) {
+        int offset = (pi.getCurrentPage() -1)* pi.getBoardLimit();
+        RowBounds rowBounds = new RowBounds(offset,pi.getBoardLimit());
+
+        return boardMapper.selectTBoardList(rowBounds);
+    }
+
+    @Override
+    public int insertTBoard(TBoard board) {
+        return boardMapper.insertTBoard(board);
+    }
+
+    @Override
+    public int insertAttachment(ArrayList<Attachment> atlist) {
+        return boardMapper.insertAttachment(atlist);
     }
 
 
